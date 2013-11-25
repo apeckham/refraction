@@ -39,6 +39,7 @@ describe Refraction do
       response = Refraction.new(app).call(env)
       response[0].should == 301
       response[1]['Location'].should == "http://yes.com/"
+      response[2].should == ["moved to http://yes.com/"]
     end
   end
 
@@ -57,6 +58,7 @@ describe Refraction do
         response = Refraction.new(app).call(env)
         response[0].should == 301
         response[1]['Location'].should == "http://foo.com/bar?baz"
+        response[2].should == ["moved to http://foo.com/bar?baz"]
       end
     end
 
